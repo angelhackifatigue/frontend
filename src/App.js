@@ -3,6 +3,7 @@ import React from 'react';
 import DriverCard from "./components/DriverCard"
 
 import './App.css';
+import './screen.css'
 
 function App() {
   return (
