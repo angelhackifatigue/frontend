@@ -1,0 +1,159 @@
+/**Start of standard buttons**/
+.btn-primary:hover,.btn-primary:focus {
+	outline:none;
+	box-shadow:none;
+}
+
+.btn-primary {
+  font-family: $font-base-family;
+  background-color: $primary;
+  border-radius: 30px;
+  height: 40px;
+  border-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-primary:hover {
+  background-color: #d8d8d8;
+  color: #b17f7f;
+}
+
+.btn-secondary {
+  @extend .btn-primary;
+  background-color: $white; 
+  color: #ED1A3D;
+  border: 3px solid #ED1A3D;
+  
+}
+
+/**End of standard buttons**/
+
+/** Start of Header component **/
+
+.header-container {
+  border-top: 0.3rem solid;
+  border-top-color: $primary;
+  background-color: $secondary;
+  height: 6.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+.navbar-brand {
+  margin-left: 4rem;
+  padding: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 1rem;
+  a {
+    color: $white;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: $primary;
+    padding: 0;
+    font-weight: heavy;
+  }
+
+}
+
+.sign-in {
+  margin-right: 85px;
+  padding: 0 15px;
+  width: 131px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+/** End of Header component **/
+
+/** Start of Footer component **/
+
+.footer-container {
+  background-color: $footer-color;
+  color: $white;
+  font-size: 1rem;
+  line-height: 1.1rem;
+  height: 5rem;
+  margin: 0;
+  padding: 30px 105px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-terms{
+  color: $white;
+}
+
+/** End of Footer component **/
+
+b, strong {
+	font-weight: bold;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+	background: $primary;
+	&:hover{
+		color:#fff;
+	}
+}
+
+.selected-plan-border{
+	border:3px solid $primary;
+}
+
+button:active {
+	background-color: $primary !important;
+}
+input.error {
+  border: 2px solid $primary;
+}
+
+.input-feedback {
+  color: $primary;
+  font-family: $font-base-family;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.4375px;
+}
+
+/** End of Footer component **/
+
+
+a,a:hover{
+	text-decoration: none;
+}
+
+a:focus {
+	outline:none;
+}
+// CloudShop Input default height is set to 75px
+.cs-input {
+	height: 74px;
+}
+
+.link-contact {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+	font-family: Avenir;
+	font-size: 21px;
+	line-height: 21px;
+	color:$primary;
+	font-weight: bold;
+}
