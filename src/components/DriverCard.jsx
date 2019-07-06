@@ -6,7 +6,7 @@ export class DriverCard extends Component {
         return (
             <div>
                 {
-                    this.props.riskLvl > 2 ?
+                    this.props.riskLvl > 0 ?
                         <div>
                             <div className="container driver-card ">
                                 <div className="row">
