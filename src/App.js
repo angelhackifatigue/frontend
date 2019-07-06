@@ -1,6 +1,7 @@
 import React from 'react';
 
-import DriverCard from "./components/DriverCard"
+
+import DriverCard from "./components/DriverCard";
 
 import './App.css';
 import './screen.css';
@@ -40,7 +41,7 @@ class App extends React.Component {
     this.Firebase = firebase.initializeApp(firebaseConfig);
     this.getIncidentData();
   }
- 
+
 
   render() {
     console.log(this.state)
@@ -48,15 +49,20 @@ class App extends React.Component {
     return (
       <div className="App">
         {this.state === {} ? null : Object.entries(this.state).map((val, index) => (
-          <DriverCard
+          val[1].is_valid ? <DriverCard
             key={index}
             driverPhotoUrl="values"
             name={val[1].driver_name}
             riskLvl={val[1].alert_level}
             passengerName="Jennifer"
             currSpeed="120km/h"
-            numActiveHours="6 hours" />
+            numActiveHours="6 hours"
+
+          />
+            : null
         ))}
+
+
       </div>
 
     );

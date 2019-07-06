@@ -1,14 +1,28 @@
 import React, { Component } from 'react'
+import UIfx from 'uifx'
+
+import alertSound from '../assets/sounds/alert-sound.mp3'
+
+
+let beep = new UIfx({
+    asset: alertSound
+})
 
 
 export class DriverCard extends Component {
+
+    playSound = () => {
+        beep.play();
+    }
     render() {
         return (
+
             <div>
                 {
                     this.props.riskLvl > 0 ?
                         <div>
                             <div className="container driver-card ">
+                                {this.playSound()}
                                 <div className="row">
                                     <div className="col-md-2 centered-container">
                                         <div className="driver-photo-container">
@@ -28,14 +42,15 @@ export class DriverCard extends Component {
                                     <div className="col-md-2 centered-container">
 
                                         <button className="btn mb-3 btn-primary"> Send Alert </button>
-
-
-
+                                        <button className="btn mb-3 btn-danger"> Delete </button>
+                                    
                                     </div>
                                 </div>
                             </div>
 
+
                         </div>
+
                         :
                         null
                 }
