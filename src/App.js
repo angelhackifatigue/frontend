@@ -45,24 +45,24 @@ class App extends React.Component {
 
   render() {
     console.log(this.state)
-    console.log("hello")
+
     return (
       <div className="App">
-        {this.state === {} ? null : Object.entries(this.state).map((val, index) => (
-          val[1].is_valid ? <DriverCard
-            key={index}
-            driverPhotoUrl="values"
-            name={val[1].driver_name}
-            riskLvl={val[1].alert_level}
-            passengerName="Jennifer"
-            currSpeed="120km/h"
-            numActiveHours="6 hours"
-
-          />
-            : null
-        ))}
-
-
+        <div className="centered-container">
+          {this.state === {} ? null : Object.entries(this.state).map((val, index) => (
+            val[1].is_valid ? <DriverCard
+              key={index}
+              driverPhotoUrl={val[1].passenger_dp_url}
+              name={val[1].driver_name}
+              riskLvl={val[1].alert_level}
+              passengerName="Jennifer"
+              currSpeed="120km/h"
+              numActiveHours="6 hours"
+              isValid={val[1].is_valid}
+            />
+              : null
+          ))}
+        </div>
       </div>
 
     );

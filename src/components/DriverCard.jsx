@@ -10,10 +10,18 @@ let beep = new UIfx({
 
 
 export class DriverCard extends Component {
+    constructor() {
+        super();
+    }
 
     playSound = () => {
         beep.play();
     }
+ 
+    deleteDriver = () =>{
+
+    } 
+
     render() {
         return (
 
@@ -41,8 +49,8 @@ export class DriverCard extends Component {
                                     </div>
                                     <div className="col-md-2 centered-container">
 
-                                        <button className="btn mb-3 btn-primary"> Send Alert </button>
-                                        <button className="btn mb-3 btn-danger"> Delete </button>
+                                        <button className="btn mb-3 btn-primary" onClick={()=>alert("Alert sent")}> Send Alert </button>
+                                        <button className="btn mb-3 btn-danger" onClick={()=>this.deleteDriver()}> Delete </button>
                                     
                                     </div>
                                 </div>
