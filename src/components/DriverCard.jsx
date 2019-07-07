@@ -18,9 +18,7 @@ export class DriverCard extends Component {
         beep.play();
     }
  
-    deleteDriver = () =>{
-
-    } 
+  
 
     render() {
         return (
@@ -31,14 +29,17 @@ export class DriverCard extends Component {
                         <div>
                             <div className="container driver-card ">
                                 {this.playSound()}
+                                
                                 <div className="row">
                                     <div className="col-md-2 centered-container">
                                         <div className="driver-photo-container">
                                             <img alt="driver" src={this.props.driverPhotoUrl} />
                                         </div>
+                                        {this.props.driverName} 
                                     </div>
                                     <div className="col-md-4 centered-container">
-                                        <p>Driver name: {this.props.name} </p>
+
+                                        <p >Driver ID: {this.props.driverId} </p> 
                                         <p> Ferrying Passenger: {this.props.passengerName}  </p>
                                         <p>Current Speed: {this.props.currSpeed} </p>
                                     </div>
@@ -50,7 +51,7 @@ export class DriverCard extends Component {
                                     <div className="col-md-2 centered-container">
 
                                         <button className="btn mb-3 btn-primary" onClick={()=>alert("Alert sent")}> Send Alert </button>
-                                        <button className="btn mb-3 btn-danger" onClick={()=>this.deleteDriver()}> Delete </button>
+                                        <button className="btn mb-3 btn-danger" onClick={()=>this.props.deleteIncident()}> Delete </button>
                                     
                                     </div>
                                 </div>
