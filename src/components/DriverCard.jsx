@@ -10,8 +10,7 @@ let beep = new UIfx({
 
 const backend = 'http://ec2-3-0-91-119.ap-southeast-1.compute.amazonaws.com:4000/callPhone';
 
-
-export class DriverCard extends Component {    
+export class DriverCard extends Component {
     callPhone() {
         const request = new Request(backend, {
             method: 'POST',
@@ -23,11 +22,9 @@ export class DriverCard extends Component {
                 phoneNumber: '+6587417215'
             })
         });
-        console.log(request)
 
         fetch(request)
             .then(response => {
-                console.log(response);
 
                 if (response.status === 200) {
                     alert(`Call is being executed to +6587417215`);
@@ -41,10 +38,16 @@ export class DriverCard extends Component {
         
     }
 
+    constructor() {
+        super();
+    }
 
     playSound = () => {
         beep.play();
     }
+ 
+  
+
     render() {
         return (
 
@@ -54,14 +57,17 @@ export class DriverCard extends Component {
                         <div>
                             <div className="container driver-card ">
                                 {this.playSound()}
+                                
                                 <div className="row">
                                     <div className="col-md-2 centered-container">
                                         <div className="driver-photo-container">
                                             <img alt="driver" src={this.props.driverPhotoUrl} />
                                         </div>
+                                        {this.props.driverName} 
                                     </div>
                                     <div className="col-md-4 centered-container">
-                                        <p>Driver name: {this.props.name} </p>
+
+                                        <p >Driver ID: {this.props.driverId} </p> 
                                         <p> Ferrying Passenger: {this.props.passengerName}  </p>
                                         <p>Current Speed: {this.props.currSpeed} </p>
                                     </div>
@@ -73,7 +79,7 @@ export class DriverCard extends Component {
                                     <div className="col-md-2 centered-container">
 
                                         <button onClick={this.callPhone} className="btn mb-3 btn-primary"> Send Alert </button>
-                                        <button className="btn mb-3 btn-danger"> Delete </button>
+                                        <button className="btn mb-3 btn-danger" onClick={()=>this.props.deleteIncident()}> Delete </button>
                                     
                                     </div>
                                 </div>

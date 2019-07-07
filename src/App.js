@@ -15,17 +15,37 @@ require('dotenv').config({
 
 class App extends React.Component {
   getIncidentData() {
-    let ref = this.Firebase.database().ref('dangers/');
+    let ref = this.Firebase.ref('dangers/');
+
     ref.on('value', snapshot => {
       const data = snapshot.val();
-      this.setState(data);
+      this.setState({
+        drivers: data
+      });
     })
+  }
+
+  deleteIncident = (id) =>{
+    let ref = this.Firebase.ref(`dangers`);
+    const danger = ref.child(id)
+
+    danger.remove();
+   
+    ref.on('value', snapshot => {
+      const data = snapshot.val();
+      this.setState({
+        drivers: data
+      });
+    })
+
   }
 
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      drivers: {}
+    };
     const firebaseConfig = {
       apiKey: process.env.API_KEY || 'AIzaSyDzuu9Kv6mcE5BfWBh_hSDTQLjJsKkbM3Q',
       authDomain: process.env.AUTH_DOMAIN || 'drowsiness-detector-d7660.firebaseapp.com',
@@ -38,7 +58,8 @@ class App extends React.Component {
 
 
     // Initialize Firebase
-    this.Firebase = firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
+    this.Firebase = firebase.database();
     this.getIncidentData();
   }
 
@@ -46,21 +67,24 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {Object.entries(this.state).map((val, index) => (
-          val[1].is_valid ? <DriverCard
-            key={index}
-            driverPhotoUrl="values"
-            name={val[1].driver_name}
-            riskLvl={val[1].alert_level}
-            passengerName="Jennifer"
-            currSpeed="120km/h"
-            numActiveHours="6 hours"
-
-          />
-            : null
-        ))}
-
-
+        <div className="centered-container">
+          {this.state.drivers !== null ? Object.entries(this.state.drivers).map((val, index) => (
+            <DriverCard
+              key={val[0]}
+              driverPhotoUrl={val[1].passenger_dp_url}
+              driverName={val[1].driver_name}
+              driverId={val[1].driverid}
+              riskLvl={val[1].alert_level}
+              passengerName="Jennifer"
+              currSpeed="120km/h"
+              numActiveHours="6 hours"
+              isValid={val[1].is_valid}
+              deleteIncident={() => this.deleteIncident(val[0])}
+            />
+            
+          )) : null
+          }
+        </div>
       </div>
 
     );
