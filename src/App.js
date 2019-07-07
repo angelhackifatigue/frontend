@@ -44,11 +44,9 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state)
-    console.log("hello")
     return (
       <div className="App">
-        {this.state === {} ? null : Object.entries(this.state).map((val, index) => (
+        {Object.entries(this.state).map((val, index) => (
           val[1].is_valid ? <DriverCard
             key={index}
             driverPhotoUrl="values"
