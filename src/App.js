@@ -68,7 +68,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="centered-container">
-          {this.state.drivers !== null ? Object.entries(this.state.drivers).map((val, index) => (
+          {this.state.drivers !== null ? Object.entries(this.state.drivers).reverse().map((val, index) => (
             <DriverCard
               key={val[0]}
               driverPhotoUrl={val[1].passenger_dp_url}
